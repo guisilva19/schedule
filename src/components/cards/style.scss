@@ -1,0 +1,35 @@
+.div-card{
+    width: 350px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0 0 20px;
+    gap: 15px;
+    font-weight: bold;
+
+
+    border: 2px solid rgba(31, 31, 31, 0.596);
+    border-radius: 10px;
+
+
+    .h3-card{
+        display: flex;
+        gap: 5px;
+        p{
+            font-weight: normal;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    }
+
+    .span-email{ 
+        p{
+            color: black;
+            font-weight: normal;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    }
+
+    button{
+        margin: 15px auto;
+    }
+}
