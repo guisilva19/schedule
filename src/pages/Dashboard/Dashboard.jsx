@@ -1,58 +1,58 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import Card from "../../components/cards/Card";
 import { userContext } from "../../context";
-import Api from "../../service/index";
+import { AiFillFilePdf } from "react-icons/ai";
+
+import Card from "../../components/cards/Card";
+import ModalCreateContact from "../../components/modalCreateContact/CreateContact";
+import ModalEdit from "../../components/modalEdit/ModalEdit";
+import ModalRemove from "../../components/modalRemove/modalRemove";
+import pdfContact from "../../reports/pdfContact";
+
 import "./style.scss";
 
 const Dashboard = () => {
-  const { user, setUser } = useContext(userContext);
-  const token = localStorage.getItem("token");
-  const nav = useNavigate();
-  const [loading, setLoading] = useState(true);
-  const [users, setUsers] = useState()
+  const { user, openModal, loading, contacts } = useContext(userContext);
 
+  const navigate = useNavigate();
 
   const sair = () => {
     localStorage.removeItem("token");
-    nav("/login", { replace: true });
+    navigate("/login", { replace: true });
   };
 
-  useEffect(() => {
-    async function loadUser() {
-      if (token) {
-        try {
-          Api.defaults.headers.common.Authorization = `Bearer ${token}`;
-          const { data } = await Api.get(`/user`);
-          setUser(data);
-          nav("/dashboard", { replace: true });
-
-          Api.get('/contact')
-        } catch (error) {
-          console.error(error);
-        }
-      }
-      setLoading(false);
-    }
-    loadUser();
-  }, []);
-
   if (!user) {
-    nav("/login", { replace: true });
+    navigate("/login", { replace: true });
   }
 
   if (loading) return <p>carregando...</p>;
 
   return user ? (
-    <div className="div-dashboard">
+    <>
       <header>
         <h2>{user.name}</h2>
-        <button onClick={() => sair()}>Sair</button>
+        <nav>
+          <ul>
+            <li onClick={() => pdfContact(contacts)}>
+              <AiFillFilePdf /> PDF
+            </li>
+            <li onClick={() => openModal()}>Contato</li>
+            <li onClick={() => sair()}>Sair</li>
+          </ul>
+        </nav>
       </header>
-      <section>
-        <Card />
+      <section className="section-contacts">
+        <h2>Contacts</h2>
+        <div className="div-card">
+          {contacts?.map((contact) => (
+            <Card contact={contact} key={contact.id} />
+          ))}
+        </div>
       </section>
-    </div>
+      <ModalCreateContact />
+      <ModalRemove />
+      <ModalEdit />
+    </>
   ) : (
     <p>carregando...</p>
   );

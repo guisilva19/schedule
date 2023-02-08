@@ -1,9 +1,11 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import Api from "../../service";
+import { IMaskInput } from "react-imask";
+import { Link } from "react-router-dom";
+import { userContext } from "../../context";
 import { schemaRegister } from "../../validators";
+
 import "./style.scss";
 
 const Register = () => {
@@ -11,31 +13,26 @@ const Register = () => {
     resolver: yupResolver(schemaRegister),
   });
 
-  const nav = useNavigate();
-
-  const registerUser = (data) => {
-    Api.post("/register", data).then((response) => {
-      toast.success("Registro feito", { autoClose: 2000 });
-      nav("/login", data);
-    });
-  };
+  const { registerUser, setInputRegister } = useContext(userContext);
 
   return (
-    <section>
+    <section className="modal-register">
       <div className="div-form">
         <h2>Register</h2>
         <form onSubmit={handleSubmit(registerUser)}>
-          <input type="text" placeholder="name" {...register("name")} />
-          <input type="text" placeholder="email" {...register("email")} />
-          <input type="text" placeholder="password" {...register("password")} />
-          <input
-            type="text"
-            placeholder="telephone"
-            {...register("telephone")}
+          <input type="text" placeholder="Name" {...register("name")} />
+          <input type="text" placeholder="Email" {...register("email")} />
+          <input type="text" placeholder="Password" {...register("password")} />
+          <IMaskInput
+            mask="(00) 0 0000-0000"
+            placeholder="DDD + Telefone"
+            onAccept={(value) => {
+              setInputRegister(value);
+            }}
           />
           <button type="submit">Registrar</button>
         </form>
-        <span>
+        <span className="span-register">
           Ja possui conta?{" "}
           <p>
             {" "}
