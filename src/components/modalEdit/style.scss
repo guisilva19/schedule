@@ -1,0 +1,65 @@
+.modal-edit {
+  width: 100vw;
+  height: 100vh;
+
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.397);
+
+  .div-edit {
+    width: 400px;
+    height: 250px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    
+    div {
+      width: 90%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+      h2 {
+        font-weight: bold;
+        font-size: 20px;
+      }
+
+      button {
+        border: unset;
+        background-color: unset;
+        
+        svg {
+          width: 25px;
+          height: 25px;
+          cursor: pointer;
+          color: red;
+        }
+      }
+    }
+    
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      input {
+        width: 70%;
+        height: 30px;
+      }
+
+      .button-salvar {
+        width: 150px;
+        height: 30px;
+      }
+    }
+  }
+}

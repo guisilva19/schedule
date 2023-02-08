@@ -1,0 +1,80 @@
+.modal {
+  background-color: rgba(0, 0, 0, 0.24);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.div-modal {
+  width: 400px;
+  height: 300px;
+  background-color: white;
+
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  form {
+    width: 90%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+    input {
+      width: 80%;
+      height: 2rem;
+
+      border-radius: 3px;
+      border: 1px solid black;
+      padding-left: 10px;
+    }
+
+    button {
+      width: 100px;
+      height: 2.5rem;
+
+      background-color: rgb(7, 7, 141);
+      color: white;
+
+      font-weight: bold;
+      border: unset;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+  }
+}
+
+.header-modal {
+  display: flex;
+  width: 90%;
+  height: 20%;
+  align-items: center;
+  justify-content: space-between;
+
+  h3 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  button {
+    border: unset;
+    background-color: unset;
+
+    svg {
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+      color: red;
+    }
+  }
+}

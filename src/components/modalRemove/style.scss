@@ -1,0 +1,46 @@
+.fundo-modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.281);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  position: fixed;
+
+  .modal-remove {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 300px;
+    height: 130px;
+    gap: 20px;
+    border-radius: 10px;
+
+    background-color: white;
+
+    h2 {
+      font-size: 18px;
+      font-weight: bolder;
+    }
+
+    div {
+      display: flex;
+      gap: 15px;
+
+      button {
+        width: 110px;
+        height: 40px;
+        border-radius: 10px;
+        border: unset;
+        color: white;
+        background-color: rgb(7, 7, 141);
+        font-weight: bold;
+        cursor: pointer;
+      }
+    }
+  }
+}
