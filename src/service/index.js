@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const Api = axios.create({
-    baseURL: "http://localhost:3001"
+    baseURL: "https://contacts-no1k.onrender.com"
 })
 
 export default Api
