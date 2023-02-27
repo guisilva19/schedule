@@ -3,7 +3,7 @@
 ## PARA RODAR A APLICAÇÃO LOCALMENTE
 `
 CLONE O REPOSITORIO E FAÇA O PASSO A PASSO 
-URL: https://github.com/guisilva19/fullstack
+URL DA API: https://github.com/guisilva19/schedule-backend
 `
 
 ## ASSIM QUE RODAR A API:
